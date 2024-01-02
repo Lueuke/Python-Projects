@@ -2,6 +2,9 @@ import hashlib
 import json 
 from time import time 
 from uuid import uuid4
+from textwrap import dedent
+
+from flask import Flask
 
 class Blockchain(object):
     def __init__(self):

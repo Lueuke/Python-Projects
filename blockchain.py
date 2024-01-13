@@ -46,7 +46,7 @@ class Blockchain(object):
             ammount: <int> Amount 
             return: <int> The index of the Block that will hold the current transaction
         """
-        self.current_transaction.append({
+        self.current_transactions.append({
             'sender': sender,
             'recipient': recipient,
             'amount': amount,
@@ -69,7 +69,7 @@ class Blockchain(object):
 
         return proof
     
-    def valid_proof(last_proof,proof):
+    def valid_proof(self,last_proof,proof):
         """
         Validates the Proof: Does the hash contain 4 leading zeros 
             last_proof: <int> Previous Proof 
@@ -148,3 +148,16 @@ def mine():
         'previous_hash': block['previous_hash'],
     }
     return jsonify(response), 200
+
+# Update the get_chain function
+@app.route('/chain', methods=['GET'])
+def get_chain():
+    response = {
+        'chain': blockchain.chain,
+        'length': len(blockchain.chain),
+    }
+    return jsonify(response), 200, {'Content-Type': 'application/json; charset=utf-8'}
+
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000)

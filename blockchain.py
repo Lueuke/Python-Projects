@@ -19,7 +19,6 @@ class Blockchain(object):
     def new_block(self,proof, previous_hash = None):
         # Creats a new Block and adds it to the chain
         """
-        
             proof: <int> The proof given by the Proof of Work algorithm
             previous_hash: <str> Hash of previous Block 
             return: <dict> New Block
@@ -41,7 +40,8 @@ class Blockchain(object):
         
     def new_transaction(self, sender, recipient, amount):
         # Adds a new transaction to the list of transactions 
-        """ Creates a new transaction to go into the next mined Block 
+        """ 
+            Creates a new transaction to go into the next mined Block 
         
             sender:<str> Address of the Sender 
             recipient: <str> Address of the Sender 

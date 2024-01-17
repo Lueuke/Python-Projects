@@ -30,7 +30,7 @@ class Blockchain(object):
             'timestamp': time(),
             'transactions': self.current_transactions,
             'proof': proof,
-            'previous_hash': previous_hash
+            'previous_hash': previous_hash or self.hash(self.chain[-1])
         }
 
         # Reset the curretn list of transactions 
@@ -91,6 +91,8 @@ class Blockchain(object):
             block: <dict> Block 
             return: <str>
         """
+        block_string = json.dumps(block, sort_keys=True).encode()
+        return hashlib.sha256(block_string).hexdigest()
         
         # We must make sure the the Dictionary is Ordered or we'll have inconsistent hashes 
     

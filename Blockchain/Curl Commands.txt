@@ -1,8 +1,0 @@
-GET 
-curl http://localhost:5000/mine
-
-POST 
-curl -X POST -H "Content-Type: application/json" -d '{"sender": "Alice", "recipient": "Bob", "amount": 10}' http://localhost:5000/transactions/new
-
-Print Chain 
-curl http://localhost:5000/chain | python -m json.tool
